@@ -1,16 +1,27 @@
 'use strict';
 module.exports = function(app) {
-    var todoList = require('../controllers/todoListController'),
-        availableRoutes = require('express-list-endpoints');
+    var fs = require('fs'),
+        todoList = require('../controllers/todoListController'),
+        availableRoutes = require('express-list-endpoints'),
+        config;
 
+    // TODO: separate logic of home
     app.get('/', function (req, res) {
-        res.render(
-            'index',
-            {
-                title:'rest-api-server',
-                message: 'All registered routes',
-                routes: availableRoutes(app)
+        fs.readFile('package.json', 'utf8', function (err, data) {
+            if (err) throw err;
+            config = JSON.parse(data);
+
+            res.render(
+                'index',
+                {
+                    name: config.name,
+                    version: config.version,
+                    routes: availableRoutes(app),
+
             })
+        });
+
+
     });
 
     // todoList Routes
