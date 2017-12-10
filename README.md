@@ -1,4 +1,4 @@
-![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/d4392f93a8c24e0eb1e15e90ff304f6e0e665f4b/img/demo.png)
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/demo.png)
 
 # instALL
 
@@ -28,7 +28,14 @@ mongo --version
 
 - while running mongod: _complains that there is no /data/db folder_ [solved](https://stackoverflow.com/questions/7948789/mongodb-mongod-complains-that-there-is-no-data-db-folder)
 
+# changelog
+
+- all changes are logged in right top corner or visit [https://headwayapp.co/rest-api-server-changelog](https://headwayapp.co/rest-api-server-changelog)
+
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/changelog.png)
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/changelog_detail.png)
 
 # test
 
-- so far by [Postman]()
+- so far by Postman
+- TODO: automatized tests
