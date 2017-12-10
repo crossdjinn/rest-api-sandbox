@@ -1,6 +1,17 @@
 'use strict';
 module.exports = function(app) {
-    var todoList = require('../controllers/todoListController');
+    var todoList = require('../controllers/todoListController'),
+        availableRoutes = require('express-list-endpoints');
+
+    app.get('/', function (req, res) {
+        res.render(
+            'index',
+            {
+                title:'rest-api-server',
+                message: 'All registered routes',
+                routes: availableRoutes(app)
+            })
+    });
 
     // todoList Routes
     app.route('/tasks')

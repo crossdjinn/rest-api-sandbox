@@ -1,6 +1,6 @@
 {
   "name": "rest-api-server",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "node.js rest api server",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^4.13.6"
+    "express-list-endpoints": "^3.0.1",
+    "mongoose": "^4.13.6",
+    "pug": "^2.0.0-rc.4"
   }
 }

@@ -9,12 +9,13 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Tododb');
 
+app.set('view engine', 'pug');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var routes = require('./api/routes/todoListRoutes'); //importing route
-routes(app); //register the route
+routes(app);
 
 app.listen(port);
 
