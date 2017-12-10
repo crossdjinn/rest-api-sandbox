@@ -8,7 +8,11 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb');
+
+var promise = mongoose.connect('mongodb://localhost/Tododb', {
+    useMongoClient: true
+});
+
 
 app.set('view engine', 'pug');
 
