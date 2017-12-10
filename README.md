@@ -1,6 +1,4 @@
-# rest-api-server
-
-![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/d4392f93a8c24e0eb1e15e90ff304f6e0e665f4b/demo.png)
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/d4392f93a8c24e0eb1e15e90ff304f6e0e665f4b/img/demo.png)
 
 # instALL
 

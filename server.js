@@ -1,5 +1,6 @@
 var express = require('express'),
     app = express(),
+    path = require('path'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Task = require('./api/models/todoListModel'), //created model loading here
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/Tododb');
 
 app.set('view engine', 'pug');
 
+app.use(express.static(path.join(__dirname, 'views')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
