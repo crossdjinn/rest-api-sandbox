@@ -1,0 +1,22 @@
+<div class="container-fluid" ng-controller="taskListController">
+    <div class="row">
+        <button ng-click="new()">new</button>
+
+        <div class="col-md-2">
+            Search: <input ng-model="query" />
+        </div>
+
+        <div class="col-md-10">
+
+            <ul class="tasks">
+                <li ng-repeat="task in tasks | filter:query">
+                    <a href="#/task/{{task._id}}">
+                        <span>{{task.name}}</span>
+                        <p>{{task.status}}</p>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

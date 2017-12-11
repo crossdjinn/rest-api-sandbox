@@ -1,3 +1,5 @@
+
+
 var parser = new UAParser();
 var socket = io();
 
@@ -28,8 +30,11 @@ socket.on('connectCounter', function(data){
     $('#connectCounter').append("<b>ON-line: </b>" + data);
 });
 
+
+
 function bodyLoaded(bodyData) {
-    console.log("Body loaded" + bodyData)
+    console.log("Body loaded" + bodyData);
+
 }
 
 var myObject = {

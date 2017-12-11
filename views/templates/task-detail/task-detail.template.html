@@ -1,0 +1,11 @@
+<div class="container-fluid" ng-controller="taskDetailController">
+    <input ng-model="task.name"/>
+    <select ng-model="task.status">
+        <option ng-repeat="o in options">{{o}}</option>
+    </select>
+
+    <button ng-click="save()">save</button>
+    <delete ng-click="delete()">delete</delete>
+
+
+</div>

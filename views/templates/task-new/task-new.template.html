@@ -1,0 +1,11 @@
+<div class="container-fluid" ng-controller="taskNewController">
+    <div class="row">
+        <button ng-click="add()">add</button>
+
+        <input ng-model="entry.name"/>
+        <select ng-model="entry.status">
+            <option ng-repeat="o in options">{{o}}</option>
+        </select>
+
+    </div>
+</div>
