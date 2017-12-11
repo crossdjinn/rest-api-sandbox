@@ -6,11 +6,23 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Task = require('./api/models/todoListModel'), //created model loading here
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    session = require("express-session")({
+        secret: "my-secret",
+        resave: true,
+        saveUninitialized: true
+    }),
+    sharedsession = require("express-socket.io-session");
 
-// mongoose instance connection url connection
+
+app.use(session);
+
+io.use(sharedsession(session, {
+    autoSave:true
+}));
+
 mongoose.Promise = global.Promise;
-
+// TODO: solve multiple databases promise
 var promise = mongoose.connect('mongodb://localhost/Tododb', {
     useMongoClient: true
 });
@@ -33,35 +45,26 @@ function filterNullValues(i) {
 
 io.on('connection', function(socket){
     console.log(Object.keys(io.sockets.sockets).filter(filterNullValues).length);
-    //socket.join('all');
+    // TODO: create model for rooms: socket.join('all');
     io.sockets.emit('connectCounter', Object.keys(io.sockets.sockets).filter(filterNullValues).length);
+
     updateNicknames();
 
-//new user
     socket.on('new user', function(data, callback){
-
         callback(true);
-            socket.nickname = data;
+            socket.nickname = data.name;
             nicknames[socket.nickname] = {online: true}; //Then we put an object with a variable online
 
             updateNicknames();
-
     });
-
-// update all user name
 
     function updateNicknames(){
         io.sockets.emit('usernames', nicknames);
     }
 
-// send message
-
     socket.on('send message', function(data){
         io.sockets.emit('new message', {msg: data, nick: socket.nickname});
     });
-
-
-//disconnected service
 
     socket.on('disconnect', function(data){
         io.sockets.emit('connectCounter', Object.keys(io.sockets.sockets).filter(filterNullValues).length);
@@ -69,6 +72,7 @@ io.on('connection', function(socket){
 
         if(!socket.nickname) return;
         nicknames[socket.nickname].online = false; //We dont splie nickname from array but change online state to false
+
         updateNicknames();
     });
 });

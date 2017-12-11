@@ -16,7 +16,7 @@ module.exports = function(app) {
                 {
                     name: config.name,
                     version: config.version,
-                    routes: availableRoutes(app),
+                    routes: availableRoutes(app)
 
             })
         });
@@ -24,7 +24,6 @@ module.exports = function(app) {
 
     });
 
-    // todoList Routes
     app.route('/tasks')
         .get(todoList.all)
         .post(todoList.create);

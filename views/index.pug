@@ -4,14 +4,14 @@ html
 
         link(rel="stylesheet", type="text/css", href="/styles/style.css")
 
-    script(src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
-    script(src="//code.jquery.com/jquery-1.11.1.js")
-    script(src="//cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
+        script(src="//code.jquery.com/jquery-1.11.1.js")
+        script(src="//cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js")
 
-    script(src="/scripts/ua-parser.min.js")
+        script(src="/scripts/ua-parser.min.js")
 
 
-    body
+    body(onload="bodyLoaded();")
         div#headwayapp
 
         h1=version
@@ -47,7 +47,6 @@ html
                     input#message(size="60", placeholder="Chat")
                     input(type="submit")
 
-
-
+        script(src="/scripts/socketio.js")
         script(src="/scripts/index.js")
         script(src="//cdn.headwayapp.co/widget.js")
