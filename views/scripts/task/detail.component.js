@@ -7,7 +7,7 @@ angularApp.controller('taskDetailController',
         });
 
         $scope.delete = function() {
-            if (window.confirm("Delete?")) {
+            if (window.confirm("Delete? " + $scope.task.name)) {
                 $scope.entry.$delete(function() {
                     window.history.back();
                 });
@@ -21,5 +21,5 @@ angularApp.controller('taskDetailController',
         };
 }).
 component('taskDetail', {
-    templateUrl: '/templates/task-detail/task-detail.template.html'
+    templateUrl: '/templates/task/detail.template.html'
 });

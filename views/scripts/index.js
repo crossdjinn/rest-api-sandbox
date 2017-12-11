@@ -1,5 +1,3 @@
-
-
 var parser = new UAParser();
 var socket = io();
 
@@ -29,12 +27,18 @@ socket.on('connectCounter', function(data){
     $('#connectCounter').empty();
     $('#connectCounter').append("<b>ON-line: </b>" + data);
 });
-
-
+function listCookies() {
+    var theCookies = document.cookie.split(';');
+    var aString = '';
+    for (var i = 1 ; i <= theCookies.length; i++) {
+        aString += i + ' ' + theCookies[i-1] + "\n";
+    }
+    return aString;
+}
+function readCookie(n){n+='=';for(var a=document.cookie.split(/;\s*/),i=a.length-1;i>=0;i--)if(!a[i].indexOf(n))return a[i].replace(n,'');}
 
 function bodyLoaded(bodyData) {
-    console.log("Body loaded" + bodyData);
-
+    console.log(document.cookie);
 }
 
 var myObject = {

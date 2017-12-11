@@ -11,5 +11,5 @@ angularApp.controller('taskNewController',
         };
 }).
 component('taskNew', {
-    templateUrl: '/templates/task-new/task-new.template.html'
+    templateUrl: '/templates/task/new.template.html'
 });

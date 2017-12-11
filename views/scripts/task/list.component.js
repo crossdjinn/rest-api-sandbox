@@ -7,5 +7,5 @@ angularApp.controller('taskListController',
         };
 }).
 component('taskList', {
-    templateUrl: '/templates/task-list/task-list.template.html'
+    templateUrl: '/templates/task/list.template.html'
 });
