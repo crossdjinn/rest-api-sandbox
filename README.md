@@ -15,7 +15,7 @@ mongo --version
 
 --
 
-**npm install**
+**npm install** and in views folder run **bower install**
 
 # run
 
