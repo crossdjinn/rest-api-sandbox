@@ -2,6 +2,7 @@ var angularApp = angular.module('ngApp', [
     // ...which depends on the `phoneList` module
     'ngRoute',
     'ngResource',
+    'ngCookies',
     'taskList',
     'taskDetail',
     'taskNew'

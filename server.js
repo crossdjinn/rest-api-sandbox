@@ -4,6 +4,7 @@ var express = require('express'),
     http = require('http').Server(app),
     io = require('socket.io')(http),
     port = process.env.PORT || 3000,
+    cookie = require('cookie'),
     mongoose = require('mongoose'),
     Task = require('./api/models/todoListModel'), //created model loading here
     bodyParser = require('body-parser'),
@@ -12,12 +13,12 @@ var express = require('express'),
         resave: true,
         saveUninitialized: true
     }),
-    sharedsession = require("express-socket.io-session");
+    sharedSession = require("express-socket.io-session");
 
 
 app.use(session);
 
-io.use(sharedsession(session, {
+io.use(sharedSession(session, {
     autoSave:true
 }));
 
@@ -37,14 +38,12 @@ var routes = require('./api/routes/todoListRoutes'); //importing route
 routes(app);
 
 nicknames = {};
-connectCounter = 0;
 
 function filterNullValues(i) {
     return (i!=null);
 }
 
 io.on('connection', function(socket){
-    console.log(Object.keys(io.sockets.sockets).filter(filterNullValues).length);
     // TODO: create model for rooms: socket.join('all');
     io.sockets.emit('connectCounter', Object.keys(io.sockets.sockets).filter(filterNullValues).length);
 
@@ -68,7 +67,6 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(data){
         io.sockets.emit('connectCounter', Object.keys(io.sockets.sockets).filter(filterNullValues).length);
-        console.log(Object.keys(io.sockets.sockets).filter(filterNullValues).length);
 
         if(!socket.nickname) return;
         nicknames[socket.nickname].online = false; //We dont splie nickname from array but change online state to false

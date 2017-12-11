@@ -37,8 +37,10 @@ function listCookies() {
 }
 function readCookie(n){n+='=';for(var a=document.cookie.split(/;\s*/),i=a.length-1;i>=0;i--)if(!a[i].indexOf(n))return a[i].replace(n,'');}
 
+
+
 function bodyLoaded(bodyData) {
-    console.log(document.cookie);
+    console.log("Body loaded: ");
 }
 
 var myObject = {
