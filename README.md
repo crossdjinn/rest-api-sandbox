@@ -1,3 +1,11 @@
+# rest-api-server 
+
+- "all in one" solution for create REST API server without programing 
+- run in any browser (exc. IE) as well as any device
+- responsive Material Design for all screens
+- real time info about all connected browsers and comunication between devices
+- TODO: prepare for "STAGE 2"
+
 ![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/home.png)
 ![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/list.png)
 ![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/new.png)
