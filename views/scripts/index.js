@@ -9,7 +9,7 @@ if(result.cpu.architecture === undefined || result.cpu.architecture === null){
 
 var device = {
     name: result.os.name + " " + result.cpu.architecture,
-    browser:result.browser.name + " " + result.browser.version,
+    browser:result.browser.name,
     engine: result.engine.name + " " + result.engine.version
 };
 
@@ -25,8 +25,10 @@ socket.on('new message', function(data){
 
 socket.on('connectCounter', function(data){
     $('#connectCounter').empty();
-    $('#connectCounter').append("<b>ON-line: </b>" + data);
+    $('#connectCounter').append(data + " live browsers");
 });
+
+
 function listCookies() {
     var theCookies = document.cookie.split(';');
     var aString = '';

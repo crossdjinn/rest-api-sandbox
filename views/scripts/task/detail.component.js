@@ -2,7 +2,7 @@ angularApp.controller('taskDetailController',
     function taskDetailController($scope, $routeParams, Task) {
         $scope.options = ['pending', 'ongoing', 'completed'];
 
-        $scope.entry = Task.get({id: $routeParams.taskId}, function(data) {
+        $scope.entry = Task.get({id: $routeParams.id}, function(data) {
             $scope.task = data;
         });
 

@@ -1,22 +1,40 @@
 <div class="container-fluid" ng-controller="taskListController">
     <div class="row">
-        <button ng-click="new()">new</button>
+        <md-list flex>
+            <md-subheader class="md-no-sticky">All tasks</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="task in tasks | filter:query" ng-href="#/task/{{task._id}}">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ task.name }}</h3>
+                    <h4>{{ task.status }}</h4>
+                    <p>{{ task.Created_date }}</p>
+                </div>
+            </md-list-item>
+            <md-divider ></md-divider>
+        </md-list>
 
-        <div class="col-md-2">
-            Search: <input ng-model="query"/>
-        </div>
 
-        <div class="col-md-10">
 
-            <ul class="tasks">
-                <li ng-repeat="task in tasks | filter:query">
-                    <a href="#/task/{{task._id}}">
-                        <span>{{task.name}}</span>
-                        <p>{{task.status}}</p>
-                    </a>
-                </li>
-            </ul>
 
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </div>

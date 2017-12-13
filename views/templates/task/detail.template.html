@@ -1,11 +1,36 @@
 <div class="container-fluid" ng-controller="taskDetailController">
-    <input ng-model="task.name"/>
-    <select ng-model="task.status">
-        <option ng-repeat="o in options">{{o}}</option>
-    </select>
+    <div class="row">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Edit task</span>
+                    <span class="md-subhead"></span>
+                </md-card-title-text>
+            </md-card-title>
 
-    <button ng-click="save()">save</button>
-    <delete ng-click="delete()">delete</delete>
+            <md-card-content>
+                <div layout="row">
+                    <md-input-container>
+                        <label>Title</label>
+                        <input ng-model="entry.name"/>
+                    </md-input-container>
+                </div>
 
-
+                <div layout="row">
+                    <md-input-container>
+                        <label>Status</label>
+                        <md-select ng-model="task.status" placeholder="Status">
+                            <md-option value="pending">Pending</md-option>
+                            <md-option value="ongoing">Ongoing</md-option>
+                            <md-option value="completed">Complete</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-align="right">
+                    <md-button class="md-accent" ng-click="delete()">delete</md-button>
+                    <md-button class="md-raised" ng-click="save()">save</md-button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
 </div>

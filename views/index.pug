@@ -1,9 +1,12 @@
-html
+html(lang="en")
     head
         title=name
 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", type="text/css", href="/styles/style.css")
         link(rel="stylesheet", type="text/css", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet", type="text/css", href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css")
+        link(rel="stylesheet", type="text/css", href="//fonts.googleapis.com/icon?family=Material+Icons")
 
         script(src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
         script(src="//code.jquery.com/jquery-1.11.1.js")
@@ -13,6 +16,15 @@ html
         script(src="/bower_components/angular-resource/angular-resource.js")
         script(src="/bower_components/angular-cookies/angular-cookies.js")
 
+        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js")
+        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js")
+        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js")
+
+        script(src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js")
+
+
+
+
         script(src="/scripts/ua-parser.min.js")
 
         script(src="/scripts/socketio.js")
@@ -20,6 +32,9 @@ html
 
         script(src="/scripts/app.module.js")
         script(src="/scripts/app.config.js")
+
+        script(src="/scripts/home/module.js")
+        script(src="/scripts/home/component.js")
 
         script(src="/scripts/task/list.module.js")
         script(src="/scripts/task/list.component.js")
@@ -31,44 +46,48 @@ html
         script(src="//cdn.headwayapp.co/widget.js")
 
     body(onload="bodyLoaded();", ng-app="ngApp")
-        div#headwayapp
+        div(ng-controller="AppCtrl", layout="column", ng-cloak, style="height: 100%")
+            section(layout="row", flex)
+                md-sidenav.md-sidenav-left(md-component-id="left", md-whiteframe="5", md-is-locked-open="$mdMedia('gt-sm')", md-swipe-left="toggleLeft()")
+                    md-toolbar.md-theme-indigo.md-hue-2
+                        h1.md-toolbar-tools=" v" + version
+
+                    md-content
+                        div(flex)
+                            md-list.menu-list(ng-controller="MenuCtrl")
+                                md-subheader.md-no-sticky Task
+                                    a(href="#/task/new")
+                                        md-list-item
+                                            i.material-icons create
+                                            p(layout-padding) create
+                                    a(href="#/task/list")
+                                        md-list-item
+                                            i.material-icons format_list_numbered
+                                            p(layout-padding) view
+                                a(href="#/")
+                                    md-list-item
+                                        i.material-icons open_in_new
+                                        p(layout-padding) API routes
+                                md-list-item
+                                    i.material-icons cast_connected
+                                    p#connectCounter(layout-padding)
+                                div#users
 
 
-        div(ng-view)
 
-        hr
-        hr
-        hr
+                md-content(flex)
+                    md-toolbar.md-theme-indigo.md-hue-2(md-whiteframe="5")
+                        div.md-toolbar-tools
+                            md-button.md-icon-button(ng-click="toggleLeft()", hide-gt-sm)
+                                i.material-icons menu
 
-        h1=version
-        h2=name
+                            h2(flex, md-truncate)
 
-        hr
+                            md-button.md-icon-button(aria-label="More")
+                                i#headwayapp
 
-        h3 All routes:
+                    md-content
+                        div(layout="column", layout-align="top center")
 
-        ul
-            for route in routes
-                li=route.methods + " > "
-                    a(href=route.path)=route.path
+                            div(ng-view, style="width: 100%")
 
-        hr
-        hr
-
-        div#connectCounter
-
-        hr
-
-        h3 Browsers:
-        div#users
-
-        hr
-
-        h3 Chat:
-
-        div#contentWrap
-            div#chatWrap
-                div#chat
-                form#send-message
-                    input#message(size="60", placeholder="Chat")
-                    input(type="submit")

@@ -15,20 +15,24 @@ module.exports = function(app) {
                 'index',
                 {
                     name: config.name,
-                    version: config.version,
-                    routes: availableRoutes(app)
-
+                    version: config.version
             })
         });
+    });
 
-
+    app.get('/routes', function (req, res) {
+        res.render(
+            'routes',
+            {
+                routes: availableRoutes(app)
+            })
     });
 
     app.route('/tasks')
         .get(todoList.all)
         .post(todoList.create);
 
-    app.route('/tasks/:taskId')
+    app.route('/tasks/:id')
         .get(todoList.read)
         .put(todoList.update)
         .delete(todoList.delete);
