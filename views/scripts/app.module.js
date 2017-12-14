@@ -4,6 +4,7 @@ var angularApp = angular.module('ngApp', [
     'ngResource',
     'ngCookies',
     'ngMaterial',
+    'angular-loading-bar',
     'taskList',
     'taskDetail',
     'taskNew',
