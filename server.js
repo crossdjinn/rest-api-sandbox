@@ -51,7 +51,7 @@ io.on('connection', function(socket){
 
     socket.on('new user', function(data, callback){
         callback(true);
-            socket.nickname = data.name;
+            socket.nickname = "<b>" + data.name + "</b><br> pub " + data.publicIp + "<br> priv " + data.privateIp;
             nicknames[socket.nickname] = {online: true}; //Then we put an object with a variable online
 
             updateNicknames();

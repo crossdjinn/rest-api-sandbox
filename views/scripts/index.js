@@ -13,6 +13,54 @@ var device = {
     engine: result.engine.name + " " + result.engine.version
 };
 
+
+/**
+ * Get the user IP throught the webkitRTCPeerConnection
+ * @param onNewIP {Function} listener function to expose the IP locally
+ * @return undefined
+ */
+function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+    //compatibility for firefox and chrome
+    var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    var pc = new myPeerConnection({
+            iceServers: []
+        }),
+        noop = function() {},
+        localIPs = {},
+        ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+        key;
+
+    function iterateIP(ip) {
+        if (!localIPs[ip]) onNewIP(ip);
+        localIPs[ip] = true;
+    }
+
+    //create a bogus data channel
+    pc.createDataChannel("");
+
+    // create offer and set local description
+    pc.createOffer().then(function(sdp) {
+        sdp.sdp.split('\n').forEach(function(line) {
+            if (line.indexOf('candidate') < 0) return;
+            line.match(ipRegex).forEach(iterateIP);
+        });
+
+        pc.setLocalDescription(sdp, noop, noop);
+    }).catch(function(reason) {
+        // An error occurred, so handle the failure to connect
+    });
+
+    //listen for candidate events
+    pc.onicecandidate = function(ice) {
+        if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+        ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+    };
+}
+
+
+
+
+
 $('#send-message').submit(function(e){
     e.preventDefault();
     socket.emit('send message', $('#message').val());
@@ -28,32 +76,27 @@ socket.on('connectCounter', function(data){
     $('#connectCounter').append(data + " live browsers");
 });
 
-
-function listCookies() {
-    var theCookies = document.cookie.split(';');
-    var aString = '';
-    for (var i = 1 ; i <= theCookies.length; i++) {
-        aString += i + ' ' + theCookies[i-1] + "\n";
-    }
-    return aString;
-}
-function readCookie(n){n+='=';for(var a=document.cookie.split(/;\s*/),i=a.length-1;i>=0;i--)if(!a[i].indexOf(n))return a[i].replace(n,'');}
-
-
+var myObject;
 
 function bodyLoaded(bodyData) {
     console.log("Body loaded: ");
+
+    getUserIP(function(private){
+        $.getJSON('https://api.ipify.org?format=json', function(public){
+            myObject = {
+                id: "cookie io os season id",
+                name: device.name + " " + device.browser + " " + device.engine,
+                privateIp: private,
+                publicIp: public.ip,
+                shortName: device.name
+            };
+
+            socket.emit('new user', myObject, function(data){
+                $('#contentWrap').show();
+            });
+        });
+    });
 }
-
-var myObject = {
-    id: "cookie io os season id",
-    name: device.name + " " + device.browser + " " + device.engine,
-    shortName: device.name
-};
-
-socket.emit('new user', myObject, function(data){
-        $('#contentWrap').show();
-});
 
 socket.on('usernames', function(data){
     var html = '';
