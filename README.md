@@ -1,4 +1,18 @@
-![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/demo.png)
+# rest-api-server 
+
+- "all in one" solution for create REST API server without programing 
+- run in any browser (exc. IE) as well as any device
+- responsive Material Design for all screens
+- real time info about all connected browsers and comunication between devices
+- TODO: prepare for "STAGE 2"
+
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/home.png)
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/list.png)
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/new.png)
+
+# responsive as well
+
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/e732c623fd503be3703a694ee4fea386209ae4f5/img/mobile%20edit.png)
 
 # instALL
 
@@ -32,10 +46,11 @@ mongo --version
 
 - all changes are logged in right top corner or visit [https://headwayapp.co/rest-api-server-changelog](https://headwayapp.co/rest-api-server-changelog)
 
-![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/changelog.png)
-![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/changelog_detail.png)
-
 # test
 
 - so far by Postman
 - TODO: automatized tests
+
+# old
+
+![alt text](https://bytebucket.org/outoffhead/rest-api-server/raw/a3745ad8742050080249334bc2c3606655145c97/img/demo.png)
