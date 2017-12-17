@@ -46,6 +46,11 @@
 .task-new {
 
 }
+
+.activeTab{
+    color: red;
+}
+
 .menu-list a, .menu-list a:hover, .menu-list a:active, .menu-list a:focus{
     text-decoration: none;
     cursor: pointer;

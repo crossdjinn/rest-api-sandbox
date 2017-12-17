@@ -42,22 +42,6 @@ factory('Task', ['$resource',
             $location.url(location);
         }
     };
-}).controller('MenuCtrl', function($scope, $mdDialog) {
-    $scope.toppings = [
-        { name: 'Pepperoni', wanted: true },
-        { name: 'Sausage', wanted: false },
-        { name: 'Black Olives', wanted: true },
-        { name: 'Green Peppers', wanted: false }
-    ];
-
-    $scope.settings = [
-        { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
-        { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
-    ];
-
-    $scope.messages = [
-        {id: 1, title: "Message A", selected: false},
-        {id: 2, title: "Message B", selected: true},
-        {id: 3, title: "Message C", selected: true},
-    ];
+}).controller('MenuCtrl', function($scope, $route) {
+    $scope.$route = $route;
 });
