@@ -62,20 +62,6 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
     };
 }
 
-
-
-
-
-$('#send-message').submit(function(e){
-    e.preventDefault();
-    socket.emit('send message', $('#message').val());
-    $('#message').val('');
-});
-
-socket.on('new message', function(data){
-    $('#chat').append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
-});
-
 socket.on('connectCounter', function(data){
     $('#connectCounter').empty();
     $('#connectCounter').append(data);

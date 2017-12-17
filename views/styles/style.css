@@ -35,6 +35,14 @@
     font-feature-settings: 'liga';
 }
 
+.md-button.md-fab.md-fab-bottom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+}
+
 #connectCounter{
     font-size: 1.2em;
 }

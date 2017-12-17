@@ -64,7 +64,9 @@ io.on('connection', function(socket){
     }
 
     socket.on('disconnect', function(data){
-        var index=nicknames.map(function(x){ return x.id; }).indexOf(socket.id);
+        var index=nicknames.map(function(x){
+            return x.id;
+        }).indexOf(socket.id);
 
         nicknames.splice(index,1);
         io.sockets.emit('connectCounter', Object.keys(io.sockets.sockets).filter(filterNullValues).length);
