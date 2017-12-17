@@ -42,7 +42,7 @@ html(lang="en")
 
         script(src="//cdn.headwayapp.co/widget.js")
 
-    body(onload="bodyLoaded();", ng-app="ngApp")
+    body(onload="bodyLoaded();", ng-app="ngApp", md-theme="docs-dark")
         a(href="#/task/new", ng-controller="MenuCtrl")
             md-button.md-accent.md-fab.md-fab-bottom-right(ng-hide="$route.current.activetab === 'taskNew'")
                 i.material-icons create
@@ -56,6 +56,10 @@ html(lang="en")
                     md-content
                         div(flex)
                             md-list.menu-list(ng-controller="MenuCtrl" ng-click="toggleLeft()")
+                                a(href="#/")
+                                    md-list-item(ng-class="{activeTab: $route.current.activetab === 'home'}")
+                                        i.material-icons open_in_new
+                                        p(layout-padding) API routes
                                 md-subheader.md-no-sticky Task
                                     a(href="#/task/new")
                                         md-list-item(ng-class="{activeTab: $route.current.activetab === 'taskNew'}")
@@ -65,10 +69,6 @@ html(lang="en")
                                         md-list-item(ng-class="{activeTab: $route.current.activetab === 'taskList'}")
                                             i.material-icons format_list_numbered
                                             p(layout-padding) All
-                                a(href="#/")
-                                    md-list-item(ng-class="{activeTab: $route.current.activetab === 'home'}")
-                                        i.material-icons open_in_new
-                                        p(layout-padding) API routes
                                 md-list-item
                                     i.material-icons cast_connected
                                     p#connectCounter(layout-padding)

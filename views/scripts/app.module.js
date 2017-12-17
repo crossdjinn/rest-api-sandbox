@@ -4,6 +4,7 @@ var angularApp = angular.module('ngApp', [
     'ngResource',
     'ngCookies',
     'ngMaterial',
+    'ngMessages',
     'angular-loading-bar',
     'taskList',
     'taskDetail',
@@ -25,6 +26,7 @@ factory('Task', ['$resource',
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 
+
     function buildToggler(componentId) {
         return function() {
             $mdSidenav(componentId).toggle();
@@ -44,4 +46,10 @@ factory('Task', ['$resource',
     };
 }).controller('MenuCtrl', function($scope, $route) {
     $scope.$route = $route;
+}).config(function($mdThemingProvider) {
+
+    // Configure a dark theme with primary foreground yellow
+
+    //$mdThemingProvider.theme('docs-dark', 'default').dark();
+
 });

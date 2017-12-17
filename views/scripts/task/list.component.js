@@ -2,7 +2,6 @@ angularApp.controller('taskListController',
     function taskListController($scope, Task, $cookies) {
         $scope.tasks = Task.query();
 
-
         $scope.cookie = $cookies.getAll();
         console.log($scope.cookie);
 
