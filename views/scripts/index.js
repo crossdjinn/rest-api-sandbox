@@ -73,48 +73,39 @@ socket.on('new message', function(data){
 
 socket.on('connectCounter', function(data){
     $('#connectCounter').empty();
-    $('#connectCounter').append(data + " live browsers");
+    $('#connectCounter').append(data);
 });
 
 var myObject;
 
 function bodyLoaded(bodyData) {
-    console.log("Body loaded: ");
 
-    getUserIP(function(private){
-        $.getJSON('https://api.ipify.org?format=json', function(public){
-            myObject = {
-                id: "cookie io os season id",
-                name: device.name + " " + device.browser + " " + device.engine,
-                privateIp: private,
-                publicIp: public.ip,
-                shortName: device.name
-            };
+}
 
-            socket.emit('new user', myObject, function(data){
-                $('#contentWrap').show();
-            });
+getUserIP(function(private){
+    $.getJSON('https://api.ipify.org?format=json', function(public){
+        myObject = {
+            name: device.name + " " + device.browser + " " + device.engine,
+            privateIp: private,
+            publicIp: public.ip,
+            shortName: device.name
+        };
+
+        socket.emit('new user', myObject, function(data){
+            $('#contentWrap').show();
         });
     });
-}
+});
 
 socket.on('usernames', function(data){
     var html = '';
-    for (var nickname in data) //Foreach all nicknames received in data
-    {
-        var isNicknameOnline = data[nickname].online //Get the online state
 
-        //We test the online status
-        if (isNicknameOnline)
-        {
-            var status = '<font color=green><b>ON</b></font>'
-        }
-        else
-        {
-            var status = '<font color=red><b>OFF</b></font>'
-        }
+    for(var i in data) {
+        var geo = data[i].geo; //Get the online state
+        var datas = data[i].data; //Get the online state
 
-        html += status + ' ' + nickname + '<br/>' //print the status
+        html +=  "<b>" + datas.name + "</b><br><i class='flag-icon flag-icon-" + geo.country.toLocaleLowerCase() + "'></i> " + geo.city + " - " + datas.publicIp + " <i>(" + datas.privateIp + ")</i><hr>" //print the status
+
+        $('#users').html(html);
     }
-    $('#users').html(html);
 });
