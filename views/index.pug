@@ -54,15 +54,15 @@ html(lang="en")
                             md-list.menu-list(ng-controller="MenuCtrl" ng-click="toggleLeft()")
                                 md-subheader.md-no-sticky Task
                                     a(href="#/task/new")
-                                        md-list-item(ng-class="{activeTab: $route.current.activetab == 'taskNew'}")
+                                        md-list-item(ng-class="{activeTab: $route.current.activetab === 'taskNew'}")
                                             i.material-icons create
                                             p(layout-padding) New
                                     a(href="#/task/list")
-                                        md-list-item(ng-class="{activeTab: $route.current.activetab == 'taskList'}")
+                                        md-list-item(ng-class="{activeTab: $route.current.activetab === 'taskList'}")
                                             i.material-icons format_list_numbered
                                             p(layout-padding) All
                                 a(href="#/")
-                                    md-list-item(ng-class="{activeTab: $route.current.activetab == 'home'}")
+                                    md-list-item(ng-class="{activeTab: $route.current.activetab === 'home'}")
                                         i.material-icons open_in_new
                                         p(layout-padding) API routes
                                 md-list-item
@@ -78,7 +78,7 @@ html(lang="en")
                             md-button.md-icon-button(ng-click="toggleLeft()", hide-gt-sm)
                                 i.material-icons menu
 
-                            h2(flex, md-truncate)
+                            h1.md-toolbar-tools(flex, md-truncate, ng-controller="MenuCtrl") {{$route.current.activename}}
 
                             i#headwayapp
 
