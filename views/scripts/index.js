@@ -3,6 +3,11 @@ var socket = io();
 
 var result = parser.getResult();
 
+var HW_config = {
+    selector: "#headwayapp", // CSS selector where to inject the badge
+    account:  "7qD1Bx"
+};
+
 if(result.cpu.architecture === undefined || result.cpu.architecture === null){
     result.cpu.architecture = result.os.version;
 }

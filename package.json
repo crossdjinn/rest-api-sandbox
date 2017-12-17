@@ -1,6 +1,6 @@
 {
   "name": "rest-api-server",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "node.js rest api server",
   "main": "index.js",
   "scripts": {
