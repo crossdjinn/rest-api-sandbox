@@ -1,4 +1,4 @@
-# rest-api-server 
+# rest-api-sandbox
 
 - "all in one" solution for create REST API server without programing 
 - run in any browser (exc. IE) as well as any device
