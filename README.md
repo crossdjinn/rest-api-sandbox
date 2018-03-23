@@ -1,4 +1,6 @@
-# rest-api-sandbox
+# DEPRECATED | rest-api-sandbox
+
+__move to:__ [https://github.com/crossdjinn/user-dream-sdk](https://github.com/crossdjinn/user-dream-sdk)
 
 - "all in one" solution for create REST API server without programing 
 - run in any browser (exc. IE) as well as any device
